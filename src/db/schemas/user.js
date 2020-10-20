@@ -4,7 +4,7 @@ const uniqueValidator = require('mongoose-unique-validator')
 const _delete = require('mongoose-delete')
 const { hashSync } = require('bcrypt')
 
-const characterSchema = require('./character')._schema
+const characterSchema = require('./character').schema
 
 const _schema = new Schema(
   {
@@ -138,6 +138,6 @@ const _model = model('user', _schema)
 export default _model
 
 module.exports = {
-  _model,
-  _schema,
+  model: _model,
+  schema: _schema,
 }

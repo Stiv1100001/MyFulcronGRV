@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose')
 const _delete = require('mongoose-delete')
 
-const cardSchema = require('./cards')._schema
+const cardSchema = require('./cards').schema
 
 const _schema = new Schema({
   nome: {
@@ -42,7 +42,9 @@ _schema.plugin(_delete)
 
 const _model = model('character', _schema)
 
+export default _model
+
 module.exports = {
-  _schema,
-  _model,
+  schema: _schema,
+  model: _model,
 }
