@@ -2,15 +2,15 @@
   <div>
     <v-app-bar fixed dense app color="primary" dark elevate-on-scroll>
       <v-app-bar-nav-icon
-        @click.stop="drawer.show = !drawer.show"
         v-if="$vuetify.breakpoint.mobile"
+        @click.stop="drawer.show = !drawer.show"
       />
       <v-btn
-        color="secondary"
         v-if="!$vuetify.breakpoint.mobile"
+        color="secondary"
         to="/amministrazione"
       >
-        <v-icon left>fa-user-cog</v-icon>
+        <v-icon left> fa-user-cog </v-icon>
         Amministrazione
       </v-btn>
       <v-spacer />
@@ -20,19 +20,19 @@
         <v-icon>{{ themeIcon }}</v-icon>
       </v-btn>
       <v-btn
-        color="error"
         v-if="!$vuetify.breakpoint.mobile"
+        color="error"
         @click="exitDialog = true"
       >
-        <v-icon left>fa-power-off</v-icon>
+        <v-icon left> fa-power-off </v-icon>
         Esci
       </v-btn>
     </v-app-bar>
 
     <v-navigation-drawer
+      v-model="drawer.show"
       app
       :disable-resize-watcher="true"
-      v-model="drawer.show"
     >
       <v-list-item>
         <v-list-item-content>
@@ -41,12 +41,12 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-divider></v-divider>
+      <v-divider />
 
       <v-list dense nav>
         <v-list-item link to="/amministrazione" nuxt>
           <v-list-item-icon>
-            <v-icon color="secondary">fa-user-cog</v-icon>
+            <v-icon color="secondary"> fa-user-cog </v-icon>
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title>Amministrazione</v-list-item-title>
@@ -54,7 +54,7 @@
         </v-list-item>
         <v-list-item @click="exitDialog = true">
           <v-list-item-icon>
-            <v-icon color="error">fa-power-off</v-icon>
+            <v-icon color="error"> fa-power-off </v-icon>
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title>Esci</v-list-item-title>
@@ -69,13 +69,13 @@
           Sei sicuro?
         </v-card-title>
 
-        <v-card-text> </v-card-text>
+        <v-card-text />
 
-        <v-divider></v-divider>
+        <v-divider />
 
         <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn text @click="exitDialog = false">Annulla</v-btn>
+          <v-spacer />
+          <v-btn text @click="exitDialog = false"> Annulla </v-btn>
           <v-btn text color="error" @click="esci()"> Esci </v-btn>
         </v-card-actions>
       </v-card>
@@ -99,35 +99,11 @@ export default {
     themeIcon() {
       let currentTheme = this.$nuxt.$colorMode.preference
 
-      switch (currentTheme) {
-        case 'light':
-          {
-            return 'fa-sun'
-          }
-          break
-
-        case 'dark':
-          {
-            return 'fa-moon'
-          }
-          break
-
-        case 'sepia':
-          {
-            return 'fa-scroll'
-          }
-          break
-
-        case 'system':
-          {
-            return 'fa-desktop'
-          }
-          break
-
-        case dafault: {
-          return ''
-        }
-      }
+      if (currentTheme == 'light') return 'fa-sun'
+      else if (currentTheme == 'dark') return 'fa-moon'
+      else if (currentTheme == 'sepia') return 'fa-scroll'
+      else if (currentTheme == 'system') return 'fa-desktop'
+      else return ''
     },
   },
 

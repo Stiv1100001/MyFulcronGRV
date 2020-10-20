@@ -15,15 +15,14 @@ import NavBarInside from '~/components/NavBarInside'
 import Footer from '~/components/Footer'
 
 export default {
+  components: {
+    NavBarInside,
+    Footer,
+  },
   data() {
     return {
       title: 'My FulcronGRV',
     }
-  },
-
-  components: {
-    NavBarInside,
-    Footer,
   },
 }
 </script>

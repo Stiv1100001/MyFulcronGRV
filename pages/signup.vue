@@ -6,22 +6,26 @@
         <v-form ref="form">
           <v-container>
             <v-row>
-              <v-col cols="12"> <h3 class="title">Anagrafica</h3></v-col>
-              <v-col cols="6">
-                <v-text-field
-                  label="Nome"
-                  :rules="[rules.required]"
-                  v-model="userData.anagrafica.nome"
-                  outlined
-                ></v-text-field>
+              <v-col cols="12">
+                <h3 class="title">
+Anagrafica
+</h3>
               </v-col>
               <v-col cols="6">
                 <v-text-field
+                  v-model="userData.anagrafica.nome"
+                  label="Nome"
+                  :rules="[rules.required]"
+                  outlined
+                />
+              </v-col>
+              <v-col cols="6">
+                <v-text-field
+                  v-model="userData.anagrafica.cognome"
                   label="Cognome"
                   :rules="[rules.required]"
-                  v-model="userData.anagrafica.cognome"
                   outlined
-                ></v-text-field>
+                />
               </v-col>
               <v-col cols="6">
                 <v-menu
@@ -33,27 +37,27 @@
                   max-width="290px"
                   min-width="290px"
                 >
-                  <template v-slot:activator="{ on, attrs }">
+                  <template #activator="{ on, attrs }">
                     <v-text-field
                       v-model="dataNascitaFormattata"
                       label="Nato il"
                       readonly
                       outlined
                       v-bind="attrs"
-                      v-on="on"
                       :rules="[rules.required]"
-                    ></v-text-field>
+                      v-on="on"
+                    />
                   </template>
                   <v-date-picker
                     ref="bday"
-                    first-day-of-week="1"
                     v-model="otherData.data"
+                    first-day-of-week="1"
                     locale="it"
                     min="1900-1-1"
                     :max="maxDate"
                     :show-current="maxDate"
                     @input="menu = false"
-                  ></v-date-picker>
+                  />
                 </v-menu>
               </v-col>
               <v-col cols="6">
@@ -62,37 +66,41 @@
                   label="Codice fiscale"
                   :rules="[rules.required, rules.codiceFiscaleLunghezza]"
                   outlined
-                ></v-text-field>
+                />
               </v-col>
               <v-col cols="6">
                 <v-select
+                  v-model="userData.anagrafica.sesso"
                   outlined
                   label="Sesso"
-                  v-model="userData.anagrafica.sesso"
                   item-text="title"
                   item-value="value"
                   :items="sexValues"
                   :rules="[rules.required]"
-                ></v-select>
+                />
               </v-col>
               <v-col cols="6">
                 <v-text-field
-                  label="Telefono"
                   v-model="userData.telefono"
+                  label="Telefono"
                   outlined
-                ></v-text-field>
+                />
               </v-col>
             </v-row>
             <v-divider />
             <v-row>
-              <v-col cols="12"> <h3 class="title">Residenza</h3></v-col>
+              <v-col cols="12">
+                <h3 class="title">
+Residenza
+</h3>
+              </v-col>
               <v-col cols="6">
                 <v-text-field
                   v-model="userData.anagrafica.residenza.via"
                   outlined
                   label="Via"
                   :rules="[rules.required]"
-                ></v-text-field>
+                />
               </v-col>
               <v-col cols="6">
                 <v-text-field
@@ -100,7 +108,7 @@
                   outlined
                   label="Città"
                   :rules="[rules.required]"
-                ></v-text-field>
+                />
               </v-col>
               <v-col cols="6">
                 <v-select
@@ -111,7 +119,7 @@
                   item-text="nome"
                   item-value="sigla"
                   :rules="[rules.required]"
-                ></v-select>
+                />
               </v-col>
             </v-row>
             <v-divider />
@@ -121,46 +129,46 @@
               </v-col>
               <v-col cols="6">
                 <v-text-field
+                  v-model="userData.email"
                   label="Email"
                   :rules="[rules.required, rules.email]"
-                  v-model="userData.email"
                   outlined
                   type="email"
-                ></v-text-field>
+                />
               </v-col>
               <v-col cols="6">
                 <v-text-field
+                  v-model="otherData.email"
                   label="Conferma Email"
                   :rules="[rules.required, rules.email, rules.emailMatch]"
-                  v-model="otherData.email"
                   outlined
                   type="email"
-                ></v-text-field>
+                />
               </v-col>
               <v-col cols="6">
                 <v-text-field
+                  v-model="userData.password"
                   label="Password"
                   :rules="[rules.required]"
-                  v-model="userData.password"
                   outlined
                   type="password"
-                ></v-text-field>
+                />
               </v-col>
               <v-col cols="6">
                 <v-text-field
+                  v-model="otherData.password"
                   label="Conferma Password"
                   :rules="[rules.required, rules.passwordMatch]"
-                  v-model="otherData.password"
                   outlined
                   type="password"
-                ></v-text-field>
+                />
               </v-col>
               <v-col cols="6">
                 <v-checkbox
                   v-model="privacy"
                   label="Accetto la privacy"
                   :rules="[rules.privacy]"
-                ></v-checkbox>
+                />
               </v-col>
             </v-row>
           </v-container>
@@ -178,8 +186,9 @@
       centered
       rounded
       color="error"
-      >{{ errorMessage }}</v-snackbar
     >
+      {{ errorMessage }}
+    </v-snackbar>
     >
   </v-row>
 </template>
@@ -684,6 +693,12 @@ export default {
     }
   },
 
+  head() {
+    return {
+      title: 'Iscriviti',
+    }
+  },
+
   computed: {
     dataNascitaFormattata() {
       if (!this.otherData.data) return
@@ -692,6 +707,20 @@ export default {
 
     maxDate() {
       return this.$moment().subtract(16, 'years').format('YYYY-MM-DD')
+    },
+  },
+
+  watch: {
+    menu(val) {
+      val && setTimeout(() => (this.$refs.bday.activePicker = 'YEAR'))
+    },
+
+    'otherData.data': function (val) {
+      if (val)
+        this.userData.anagrafica.data_nascita = this.$moment(
+          this.otherData.data,
+          'YYYY-MM-DD'
+        ).toDate()
     },
   },
 
@@ -712,26 +741,6 @@ export default {
         })
       }
     },
-  },
-
-  watch: {
-    menu(val) {
-      val && setTimeout(() => (this.$refs.bday.activePicker = 'YEAR'))
-    },
-
-    'otherData.data': function (val) {
-      if (val)
-        this.userData.anagrafica.data_nascita = this.$moment(
-          this.otherData.data,
-          'YYYY-MM-DD'
-        ).toDate()
-    },
-  },
-
-  head() {
-    return {
-      title: 'Iscriviti',
-    }
   },
 }
 </script>
