@@ -7,9 +7,7 @@
           <v-container>
             <v-row>
               <v-col cols="12">
-                <h3 class="title">
-Anagrafica
-</h3>
+                <h3 class="title">Anagrafica</h3>
               </v-col>
               <v-col cols="6">
                 <v-text-field
@@ -90,9 +88,7 @@ Anagrafica
             <v-divider />
             <v-row>
               <v-col cols="12">
-                <h3 class="title">
-Residenza
-</h3>
+                <h3 class="title">Residenza</h3>
               </v-col>
               <v-col cols="6">
                 <v-text-field
