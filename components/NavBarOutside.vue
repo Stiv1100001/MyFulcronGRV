@@ -23,35 +23,11 @@ export default {
     themeIcon() {
       let currentTheme = this.$nuxt.$colorMode.preference
 
-      switch (currentTheme) {
-        case 'light':
-          {
-            return 'fa-sun'
-          }
-          break
-
-        case 'dark':
-          {
-            return 'fa-moon'
-          }
-          break
-
-        case 'sepia':
-          {
-            return 'fa-scroll'
-          }
-          break
-
-        case 'system':
-          {
-            return 'fa-desktop'
-          }
-          break
-
-        case dafault: {
-          return ''
-        }
-      }
+      if (currentTheme == 'light') return 'fa-sun'
+      else if (currentTheme == 'dark') return 'fa-moon'
+      else if (currentTheme == 'sepia') return 'fa-scroll'
+      else if (currentTheme == 'system') return 'fa-desktop'
+      else return ''
     },
   },
 
