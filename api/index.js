@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const connectToDB = require('./../src/db/connectToDB')
+const db = require('./../src/db')
 
 try {
   // Create express instance
@@ -15,7 +15,7 @@ try {
   // Import API Routes
   app.use(signup)
 
-  connectToDB()
+  db.connect()
 
   // Export express app
   module.exports = app
