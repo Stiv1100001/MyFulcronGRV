@@ -15,16 +15,16 @@ import NavBarOutside from '~/components/NavBarOutside'
 import Footer from '~/components/Footer'
 
 export default {
-  name: 'outside',
-  data() {
-    return {
-      title: 'My FulcronGRV',
-    }
-  },
+  name: 'Outside',
 
   components: {
     NavBarOutside,
     Footer,
+  },
+  data() {
+    return {
+      title: 'My FulcronGRV',
+    }
   },
 }
 </script>
