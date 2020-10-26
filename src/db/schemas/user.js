@@ -5,6 +5,7 @@ const _delete = require('mongoose-delete')
 const { hashSync } = require('bcrypt')
 
 const characterSchema = require('./character').schema
+const IncrementalData = require('./incrementalData')
 
 const _schema = new Schema(
   {
@@ -15,11 +16,12 @@ const _schema = new Schema(
     },
 
     n_tessera: {
-      type: String,
-      required: true,
-      unique: [true, 'Numero tessera già esistente!'],
-      minlength: 8,
-      maxlength: 8,
+      type: Number,
+      get(v) {
+        v = v.toString()
+        while (v.length < 8) v = '0' + v
+        return v
+      },
     },
 
     scadenza_tessera: {
@@ -128,6 +130,28 @@ const _schema = new Schema(
 
 _schema.virtual('isAdmin').get(() => {
   return this.ruolo.length > 0
+})
+
+_schema.pre('save', (next) => {
+  let doc = this
+
+  IncrementalData.findByIdAndUpdate(
+    { _id: 'tessera' },
+    { $inc: { seq: 1 } },
+    (error, tessera) => {
+      if (error) return next(error)
+      else if (!tessera) {
+        tessera = new IncrementalData({ _id: 'tessera' }, { $inc: { seq: 1 } })
+        tessera.save(() => {
+          doc.tessera = tessera.seq
+          next()
+        })
+      } else {
+        doc.tessera = tessera.seq
+        next()
+      }
+    }
+  )
 })
 
 _schema.plugin(uniqueValidator, { message: '{PATH} già esistente! ({VALUE})' })
