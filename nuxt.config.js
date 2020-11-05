@@ -35,10 +35,12 @@ export default {
     '@nuxtjs/sitemap',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    // https://auth.nuxtjs.org/
+    '@nuxtjs/auth',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
-    '@nuxt/content',
+    // '@nuxt/content',
     // https://nuxtjs.org/blog/going-dark-with-nuxtjs-color-mode/
     '@nuxtjs/color-mode',
     // https://www.npmjs.com/package/@nuxtjs/robots
@@ -51,18 +53,42 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseUrl: 'http://localhost:3000',
+    baseUrl:
+      process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:3000',
     retry: { retries: 3 },
-    headers: {
-      post: {
-        //'Content-Type': 'application/x-www-form-urlencoded',
-        'Content-Type': 'application/json',
+  },
+
+  auth: {
+    resetOnError: true,
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/api/auth/login',
+            method: 'post',
+            propertyName: 'token',
+          },
+          user: {
+            url: '/api/auth/user',
+            method: 'get',
+            propertyName: 'user',
+          },
+          logout: false,
+        },
+        tokenRequired: true,
+        tokenType: 'Bearer',
+        redirect: {
+          login: '/', // User will be redirected to this path if login is required.
+          home: '/dashboard', // User will be redirect to this path after login. (rewriteRedirects will rewrite this path)
+          logout: '/login', // User will be redirected to this path if after logout, current route is protected.
+          // callback: '/callback' // User will be redirect to this path by the identity provider after login. (Should match configured Allowed Callback URLs (or similar setting) in your app/client with the identity provider)
+        },
       },
     },
   },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
-  content: {},
+  // content: {},
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
