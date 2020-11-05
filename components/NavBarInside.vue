@@ -6,7 +6,7 @@
         @click.stop="drawer.show = !drawer.show"
       />
       <v-btn
-        v-if="!$vuetify.breakpoint.mobile"
+        v-if="!$vuetify.breakpoint.mobile && $auth.user.ruolo.length > 0"
         color="secondary"
         to="/amministrazione"
       >
@@ -48,7 +48,7 @@
           <v-list-item-icon>
             <v-icon color="secondary"> fa-user-cog </v-icon>
           </v-list-item-icon>
-          <v-list-item-content>
+          <v-list-item-content v-if="$auth.user.ruolo.length > 0">
             <v-list-item-title>Amministrazione</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -110,9 +110,7 @@ export default {
   methods: {
     esci() {
       this.exitDialog = false
-      this.$router.push({
-        path: '/login',
-      })
+      this.$auth.logout()
     },
 
     changeTheme() {
