@@ -27,8 +27,6 @@ _schema.plugin(_delete)
 
 const _model = model('card', _schema)
 
-export default _model
-
 module.exports = {
   model: _model,
   schema: _schema,

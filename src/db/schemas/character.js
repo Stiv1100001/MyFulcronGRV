@@ -42,8 +42,6 @@ _schema.plugin(_delete)
 
 const _model = model('character', _schema)
 
-export default _model
-
 module.exports = {
   schema: _schema,
   model: _model,

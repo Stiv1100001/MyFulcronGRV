@@ -2,10 +2,10 @@ const { Schema, model } = require('mongoose')
 
 const uniqueValidator = require('mongoose-unique-validator')
 const _delete = require('mongoose-delete')
-const { hashSync } = require('bcrypt')
+const { autoIncrement } = require('mongoose-plugin-autoinc-fix')
+const { hashSync, compareSync } = require('bcrypt')
 
 const characterSchema = require('./character').schema
-const IncrementalData = require('./incrementalData')
 
 const _schema = new Schema(
   {
@@ -13,15 +13,6 @@ const _schema = new Schema(
       type: Date,
       default: Date.now,
       immutable: true,
-    },
-
-    n_tessera: {
-      type: Number,
-      get(v) {
-        v = v.toString()
-        while (v.length < 8) v = '0' + v
-        return v
-      },
     },
 
     scadenza_tessera: {
@@ -48,7 +39,7 @@ const _schema = new Schema(
     password: {
       type: String,
       required: true,
-      set: (v) => hashSync(v, 10),
+      set: (v) => hashSync(v, Number(process.env.BC_SALT)),
     },
 
     anagrafica: {
@@ -128,38 +119,24 @@ const _schema = new Schema(
   { toJSON: { virtual: true } }
 )
 
-_schema.virtual('isAdmin').get(() => {
+_schema.methods.checkPassword = function (password) {
+  return compareSync(password, this.password)
+}
+
+_schema.methods.isAdmin = function () {
   return this.ruolo.length > 0
-})
-
-_schema.pre('save', (next) => {
-  let doc = this
-
-  IncrementalData.findByIdAndUpdate(
-    { _id: 'tessera' },
-    { $inc: { seq: 1 } },
-    (error, tessera) => {
-      if (error) return next(error)
-      else if (!tessera) {
-        tessera = new IncrementalData({ _id: 'tessera' }, { $inc: { seq: 1 } })
-        tessera.save(() => {
-          doc.tessera = tessera.seq
-          next()
-        })
-      } else {
-        doc.tessera = tessera.seq
-        next()
-      }
-    }
-  )
-})
+}
 
 _schema.plugin(uniqueValidator, { message: '{PATH} già esistente! ({VALUE})' })
 _schema.plugin(_delete)
+_schema.plugin(autoIncrement, {
+  model: 'User',
+  field: 'n_tessera',
+  startAt: 1,
+  incrementBy: 1,
+})
 
 const _model = model('user', _schema)
-
-export default _model
 
 module.exports = {
   model: _model,
