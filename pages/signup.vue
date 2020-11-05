@@ -727,11 +727,12 @@ export default {
 
     submit() {
       if (this.$refs.form.validate()) {
-        this.$axios.post('/api/signup', this.userData).then((res) => {
+        this.$axios.post('/api/auth/signup', this.userData).then((res) => {
           let data = res.data
 
           if (data.error) {
-            this.errorMessage = data.error
+            this.errorMessage = data.error.message
+            console.error(data.error)
             this.snackbar = true
           }
         })
