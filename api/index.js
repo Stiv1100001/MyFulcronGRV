@@ -1,20 +1,39 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
+const morgan = require('morgan')
+const passport = require('passport')
+
 const db = require('./../src/db')
 
 try {
   // Create express instance
   const app = express()
 
-  // Require API routes
-  const signup = require('./routes/signup')
+  // Set params
+  app.set('trust proxy', true) // * read client ip from left X-Forwarded-* (Nginx proxy)
 
-  app.use(bodyParser.urlencoded({ extended: true }))
-  app.use(bodyParser.json())
+  // Initiliaze Passport.js strategies
+  require('./passport-local')
+
+  // Add middlewares
+  app.use(passport.initialize()) // * Add Passport.js instance for authenticated route
+  app.use(bodyParser.urlencoded({ extended: true })) // * Parse form-urlencoded to JSON
+  app.use(bodyParser.json()) // * Parse application/json to JSON
+  app.use(cookieParser()) // * Parse cookie to JSON
+  app.use(
+    morgan(
+      '[ from :remote-addr at :date[clf] ]\t:http-version :method \tto :url\t status::status - took :response-time ms'
+    )
+  ) // * Log every request to API
+
+  // Require API routes
+  const auth = require('./routes/auth')
 
   // Import API Routes
-  app.use(signup)
+  app.use('/auth', auth)
 
+  // Connect app to DB instance
   db.connect()
 
   // Export express app
