@@ -85,6 +85,11 @@ export default {
         },
       },
     },
+    cookie: {
+      options: {
+        maxAge: 60 * 60 * 24 * 365,
+      },
+    },
   },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
