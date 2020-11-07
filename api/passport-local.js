@@ -1,7 +1,6 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const { Strategy, ExtractJwt } = require('passport-jwt')
-const { compareSync } = require('bcrypt')
 
 const User = require('../src/db').schemas.User.model
 
