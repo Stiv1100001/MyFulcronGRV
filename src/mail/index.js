@@ -1,8 +1,5 @@
-const nodemailer = require('nodemailer')
+const transporter = require('./generateTransporter')
 
-const transporter = nodemailer.createTransport({
-  sendmail: true,
-  newline: 'unix',
-})
-
-export default transporter
+module.exports = {
+  transporter,
+}
