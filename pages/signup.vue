@@ -9,7 +9,7 @@
               <v-col cols="12">
                 <h3 class="title">Anagrafica</h3>
               </v-col>
-              <v-col cols="6">
+              <v-col cols="12" sm="12" md="12" lg="6" xl="6">
                 <v-text-field
                   v-model="userData.anagrafica.nome"
                   label="Nome"
@@ -17,7 +17,7 @@
                   outlined
                 />
               </v-col>
-              <v-col cols="6">
+              <v-col cols="12" sm="12" md="12" lg="6" xl="6">
                 <v-text-field
                   v-model="userData.anagrafica.cognome"
                   label="Cognome"
@@ -25,7 +25,7 @@
                   outlined
                 />
               </v-col>
-              <v-col cols="6">
+              <v-col cols="12" sm="12" md="12" lg="6" xl="6">
                 <v-menu
                   ref="menu"
                   v-model="menu"
@@ -58,7 +58,7 @@
                   />
                 </v-menu>
               </v-col>
-              <v-col cols="6">
+              <v-col cols="12" sm="12" md="12" lg="6" xl="6">
                 <v-text-field
                   v-model="userData.anagrafica.codice_fiscale"
                   label="Codice fiscale"
@@ -66,7 +66,7 @@
                   outlined
                 />
               </v-col>
-              <v-col cols="6">
+              <v-col cols="4" sm="4" md="4" lg="4" xl="4">
                 <v-select
                   v-model="userData.anagrafica.sesso"
                   outlined
@@ -77,7 +77,15 @@
                   :rules="[rules.required]"
                 />
               </v-col>
-              <v-col cols="6">
+              <v-col
+                cols="8"
+                sm="8"
+                md="8"
+                lg="6"
+                offset-lg="2"
+                xl="6"
+                offset-xl="2"
+              >
                 <v-text-field
                   v-model="userData.telefono"
                   label="Telefono"
@@ -90,7 +98,7 @@
               <v-col cols="12">
                 <h3 class="title">Residenza</h3>
               </v-col>
-              <v-col cols="6">
+              <v-col cols="12" sm="12" md="12" lg="6" xl="6">
                 <v-text-field
                   v-model="userData.anagrafica.residenza.via"
                   outlined
@@ -98,7 +106,7 @@
                   :rules="[rules.required]"
                 />
               </v-col>
-              <v-col cols="6">
+              <v-col cols="12" sm="12" md="12" lg="6" xl="6">
                 <v-text-field
                   v-model="userData.anagrafica.residenza.citta"
                   outlined
@@ -106,7 +114,7 @@
                   :rules="[rules.required]"
                 />
               </v-col>
-              <v-col cols="6">
+              <v-col cols="12" sm="12" md="12" lg="6" xl="6">
                 <v-select
                   v-model="userData.anagrafica.residenza.provincia"
                   outlined
@@ -123,7 +131,7 @@
               <v-col cols="12">
                 <h3 class="title">Dati account</h3>
               </v-col>
-              <v-col cols="6">
+              <v-col cols="12" sm="12" md="12" lg="6" xl="6">
                 <v-text-field
                   v-model="userData.email"
                   label="Email"
@@ -132,7 +140,7 @@
                   type="email"
                 />
               </v-col>
-              <v-col cols="6">
+              <v-col cols="12" sm="12" md="12" lg="6" xl="6">
                 <v-text-field
                   v-model="otherData.email"
                   label="Conferma Email"
@@ -141,7 +149,7 @@
                   type="email"
                 />
               </v-col>
-              <v-col cols="6">
+              <v-col cols="12" sm="12" md="12" lg="6" xl="6">
                 <v-text-field
                   v-model="userData.password"
                   label="Password"
@@ -150,7 +158,7 @@
                   type="password"
                 />
               </v-col>
-              <v-col cols="6">
+              <v-col cols="12" sm="12" md="12" lg="6" xl="6">
                 <v-text-field
                   v-model="otherData.password"
                   label="Conferma Password"
@@ -731,7 +739,8 @@ export default {
           let data = res.data
 
           if (data.error) {
-            this.errorMessage = data.error.message
+            if (data.code === 11000) this.errorMessage = data.error
+            else this.errorMessage = data.error.message
             console.error(data.error)
             this.snackbar = true
           }
