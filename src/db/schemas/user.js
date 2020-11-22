@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose')
 
-const uniqueValidator = require('mongoose-unique-validator')
 const _delete = require('mongoose-delete')
 const { autoIncrement } = require('mongoose-plugin-autoinc-fix')
 const { hashSync, compareSync } = require('bcrypt')
@@ -83,6 +82,7 @@ const _schema = new Schema(
         minlength: 16,
         maxlength: 16,
         uppercase: true,
+        unique: true,
       },
 
       sesso: {
@@ -127,8 +127,7 @@ _schema.methods.isAdmin = function () {
   return this.ruolo.length > 0
 }
 
-_schema.plugin(uniqueValidator, { message: '{PATH} già esistente! ({VALUE})' })
-_schema.plugin(_delete)
+_schema.plugin(_delete, { overrideMethods: 'all' })
 _schema.plugin(autoIncrement, {
   model: 'User',
   field: 'n_tessera',
