@@ -11,18 +11,19 @@
 </template>
 
 <script>
-import NavBarInside from '~/components/NavBarInside'
-import Footer from '~/components/Footer'
+import cookie from '~/mixins/cookie'
 
 export default {
-  components: {
-    NavBarInside,
-    Footer,
-  },
+  mixins: [cookie],
+
   data() {
     return {
       title: 'My FulcronGRV',
     }
+  },
+
+  mounted() {
+    setTimeout(() => this.checkCookie(), 3000)
   },
 }
 </script>
