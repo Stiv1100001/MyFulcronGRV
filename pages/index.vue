@@ -32,6 +32,8 @@
 export default {
   layout: 'outside',
 
+  middleware: ['alreadyLogged'],
+
   data() {
     return {
       loginInfo: {
