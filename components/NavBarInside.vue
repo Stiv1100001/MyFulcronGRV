@@ -5,8 +5,13 @@
         v-if="$vuetify.breakpoint.mobile"
         @click.stop="drawer.show = !drawer.show"
       />
+      <!-- eslint-disable -->
       <AmministrazioneButton
-        v-if="!$vuetify.breakpoint.mobile && $auth.user.ruolo.length > 0"
+        v-if="
+          !$vuetify.breakpoint.mobile &&
+          $auth.loggedIn &&
+          $auth.user.ruolo.length > 0
+        "
       />
       <v-spacer />
       <v-toolbar-title>{{ title }}</v-toolbar-title>
@@ -52,17 +57,7 @@
 </template>
 
 <script>
-import LogoutButton from '~/components/navbar/LogoutButton'
-import AmministrazioneButton from '~/components/navbar/AmministrazioneButton'
-import ThemeButton from '~/components/navbar/ThemeButton'
-
 export default {
-  components: {
-    LogoutButton,
-    AmministrazioneButton,
-    ThemeButton,
-  },
-
   data() {
     return {
       title: 'MyFulcronGRV',
