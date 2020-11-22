@@ -33,8 +33,16 @@ router.post('/signup', (req, res) => {
   }
 
   new User(newUser).save((err, user) => {
-    if (err) res.json({ status: 'failed', error: err })
-    else {
+    if (err) {
+      // duplicate unique values handling
+      if (err.code === 11000) {
+        let error = ''
+        Object.keys(err.keyValue).forEach(
+          (key) => (error += `${err.keyValue[key]} è già stato utilizzato!\n`)
+        )
+        res.json({ status: 'failed', error, code: 11000 })
+      } else res.json({ status: 'failed', error: err })
+    } else {
       if (!user) res.json({ status: 'failed', error: 'Failed fetching user' })
       else res.json({ status: 'success' })
     }
@@ -54,7 +62,6 @@ router.get(
   '/user',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    //// console.log(req.user)
     const { _id } = req.user
     User.findOne({ _id })
       .select('-password')
