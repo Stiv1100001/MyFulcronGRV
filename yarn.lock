@@ -1540,11 +1540,6 @@
     mustache "^2.3.0"
     stack-trace "0.0.10"
 
-"@sindresorhus/is@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-4.0.0.tgz#2ff674e9611b45b528896d820d3d7a812de2f0e4"
-  integrity sha512-FyD2meJpDPjyNQejSjvnhpgI/azsQkA4lGbuu5BQZfjvJ9cbRZXzeWL2HceCekW4lixO9JPesIIQkSoLjeJHNQ==
-
 "@types/anymatch@*":
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/@types/anymatch/-/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
@@ -3927,13 +3922,12 @@ elliptic@^6.5.3:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
-email-templates@^7.1.2:
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/email-templates/-/email-templates-7.1.2.tgz#c8b0435d182cea08c1d3c289c9a9574da7efe4a6"
-  integrity sha512-+tp0oUj16WwkR+qo9dbrZN0H64g+ya6NrzqHi2PtJQNVrPQU1oSiERKfOQdmK52VBvpzpaawI2tHDuknvb7Czw==
+email-templates@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/email-templates/-/email-templates-7.2.0.tgz#88f89acd25e21447d3591bc42a6fbe21484931a6"
+  integrity sha512-BFZysF/uiLz+KT09YowdlXtQ1Ms7Zqk1H+vg7QE3La8+hBlpYpjv0f95Ljro4RohOesYmTNzoaWkrkXK6O4+Tw==
   dependencies:
     "@ladjs/i18n" "^6.0.5"
-    "@sindresorhus/is" "^4.0.0"
     consolidate "^0.16.0"
     debug "^4.2.0"
     get-paths "^0.0.7"
@@ -3941,7 +3935,6 @@ email-templates@^7.1.2:
     juice "^7.0.0"
     lodash "^4.17.20"
     nodemailer "^6.4.14"
-    pify "^5.0.0"
     preview-email "^2.0.2"
 
 emoji-regex@^7.0.1:
@@ -7427,11 +7420,6 @@ pify@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
-
-pify@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/pify/-/pify-5.0.0.tgz#1f5eca3f5e87ebec28cc6d54a0e4aaf00acc127f"
-  integrity sha512-eW/gHNMlxdSP6dmG6uJip6FXN0EQBwm2clYYd8Wul42Cwu/DK8HEftzsapcNdYe2MfLiIwZqsDk2RDEsTE79hA==
 
 pkg-dir@^3.0.0:
   version "3.0.0"
