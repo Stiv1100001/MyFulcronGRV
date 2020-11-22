@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser')
 const morgan = require('morgan')
 const passport = require('passport')
 
+const { adminMiddleware } = require('./customMiddlewares')
 const db = require('./../src/db')
 
 try {
@@ -29,9 +30,16 @@ try {
 
   // Require API routes
   const auth = require('./routes/auth')
+  const admin = require('./routes/admin')
 
   // Import API Routes
   app.use('/auth', auth)
+  app.use(
+    '/admin',
+    passport.authenticate('jwt', { session: false }),
+    adminMiddleware, // * check if is an admin
+    admin
+  )
 
   // Connect app to DB instance
   db.connect()
