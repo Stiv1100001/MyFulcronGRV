@@ -24,22 +24,7 @@
 </template>
 
 <script>
-import UserCard from '~/components/dashboard/UserCard'
-import PlayerCard from '~/components/dashboard/PlayerCard'
-import NewsCard from '~/components/dashboard/NewsCard'
-
-import PlayersSlot from '~/components/dashboard/PlayersSlot'
-import EventSlot from '~/components/dashboard/EventSlot'
-
 export default {
-  components: {
-    UserCard,
-    PlayerCard,
-    NewsCard,
-    PlayersSlot,
-    EventSlot,
-  },
-
   middleware: ['auth'],
 
   data() {
