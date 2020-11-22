@@ -28,14 +28,14 @@ export default {
     button() {
       let button = {}
 
-      if (this.$route.path === '/amministrazione') {
-        button.to = '/dashboard'
-        button.title = 'Dashboard'
-        button.icon = 'fa-user'
-      } else if (this.$route.path === '/dashboard') {
+      if (this.$route.path === '/dashboard') {
         button.to = '/amministrazione'
         button.title = 'Amministrazione'
         button.icon = 'fa-user-cog'
+      } else {
+        button.to = '/dashboard'
+        button.title = 'Dashboard'
+        button.icon = 'fa-user'
       }
 
       return button
