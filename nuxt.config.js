@@ -4,6 +4,7 @@ export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: '%s - MyFulcronGRV',
+    title: 'Gestionale',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -35,16 +36,18 @@ export default {
     '@nuxtjs/sitemap',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    // https://www.npmjs.com/package/cookie-universal-nuxt
+    'cookie-universal-nuxt',
     // https://auth.nuxtjs.org/
     '@nuxtjs/auth',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    // https://go.nuxtjs.dev/content
-    // '@nuxt/content',
     // https://nuxtjs.org/blog/going-dark-with-nuxtjs-color-mode/
     '@nuxtjs/color-mode',
     // https://www.npmjs.com/package/@nuxtjs/robots
     '@nuxtjs/robots',
+    // https://github.com/nuxt-community/modules/tree/master/packages/toast
+    '@nuxtjs/toast',
   ],
 
   serverMiddleware: {
@@ -91,9 +94,6 @@ export default {
       },
     },
   },
-
-  // Content module configuration (https://go.nuxtjs.dev/config-content)
-  // content: {},
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
