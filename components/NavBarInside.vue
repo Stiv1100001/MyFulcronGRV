@@ -6,17 +6,10 @@
         @click.stop="drawer.show = !drawer.show"
       />
       <!-- eslint-disable -->
-      <AmministrazioneButton
-        v-if="
-          !$vuetify.breakpoint.mobile &&
-          $auth.loggedIn &&
-          $auth.user.ruolo.length > 0
-        "
-      />
+      <AmministrazioneButton v-if="show" />
       <v-spacer />
       <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer />
-      <ThemeButton />
       <LogoutButton v-if="!$vuetify.breakpoint.mobile" />
     </v-app-bar>
 
@@ -77,6 +70,16 @@ export default {
         easing: 'easeInQuad',
       },
     }
+  },
+
+  computed: {
+    show() {
+      return (
+        !this.$vuetify.breakpoint.mobile &&
+        this.$auth.loggedIn &&
+        this.$auth.user?.ruolo?.length !== 0
+      )
+    },
   },
 
   methods: {

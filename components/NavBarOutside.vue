@@ -4,18 +4,13 @@
       <v-spacer />
       <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer />
-      <ThemeButton />
     </v-app-bar>
   </div>
 </template>
 
 <script>
-import ThemeButton from '~/components/navbar/ThemeButton'
-
 export default {
-  components: {
-    ThemeButton,
-  },
+  components: {},
   data() {
     return {
       title: 'MyFulcronGRV',

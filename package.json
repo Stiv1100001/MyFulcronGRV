@@ -41,7 +41,6 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
-    "@nuxtjs/color-mode": "^2.0.0",
     "@nuxtjs/moment": "^1.6.1",
     "@nuxtjs/vuetify": "^1.11.2",
     "@types/dotenv": "^8.2.0",
