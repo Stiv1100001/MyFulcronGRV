@@ -9,15 +9,9 @@ const router = new Router()
 router.post('/signup', (req, res) => {
   let userData = req.body
 
-  if (Object.keys(userData).length === 0 && userData.constructor === Object) {
-    res.json({ msg: '', error: 'Empty data' })
-    return
-  }
-
-  let newUser = {
+  let newUser = new User({
     email: userData.email,
     telefono: userData.telefono,
-    password: userData.password,
     anagrafica: {
       nome: userData.anagrafica.nome,
       cognome: userData.anagrafica.cognome,
@@ -30,18 +24,12 @@ router.post('/signup', (req, res) => {
         provincia: userData.anagrafica.residenza.provincia,
       },
     },
-  }
+  })
 
-  new User(newUser).save((err, user) => {
+  User.register(newUser, userData.password, (err, user) => {
     if (err) {
-      // duplicate unique values handling
-      if (err.code === 11000) {
-        let error = ''
-        Object.keys(err.keyValue).forEach(
-          (key) => (error += `${err.keyValue[key]} è già stato utilizzato!\n`)
-        )
-        res.json({ status: 'failed', error, code: 11000 })
-      } else res.json({ status: 'failed', error: err })
+      console.error(err)
+      res.json({ status: 'failed', error: err })
     } else {
       if (!user) res.json({ status: 'failed', error: 'Failed fetching user' })
       else res.json({ status: 'success' })
