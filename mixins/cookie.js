@@ -12,13 +12,14 @@ export default {
             position: 'bottom-right',
             duration: null,
             iconPack: 'fontawesome',
-            theme: 'bubble',
+            icon: 'fa-cookie',
+            theme: 'outline',
             singleton: true,
             action: [
               {
                 text: 'OK',
                 onClick: (e, toastObject) => {
-                  nuxt.$cookies.set('coockieConsent', 'ok')
+                  nuxt.$cookies.set('cookieConsent', 'ok')
                   toastObject.goAway(0)
                 },
               },
