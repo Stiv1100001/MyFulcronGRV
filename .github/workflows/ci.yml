@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [debian-latest]
+        os: [ubuntu-latest]
         node: [15.6]
 
     steps:
