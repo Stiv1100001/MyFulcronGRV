@@ -16,8 +16,8 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        node: [15.1]
+        os: [debian-latest]
+        node: [15.6]
 
     steps:
       - name: Checkout 🛎
