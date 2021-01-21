@@ -18,13 +18,7 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      drawer: true,
-    }
-  },
-}
+export default {}
 </script>
 
 <style></style>
