@@ -42,8 +42,6 @@ export default {
     '@nuxtjs/auth',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    // https://nuxtjs.org/blog/going-dark-with-nuxtjs-color-mode/
-    '@nuxtjs/color-mode',
     // https://www.npmjs.com/package/@nuxtjs/robots
     '@nuxtjs/robots',
     // https://github.com/nuxt-community/modules/tree/master/packages/toast
