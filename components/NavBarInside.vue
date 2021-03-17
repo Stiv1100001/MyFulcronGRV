@@ -5,8 +5,7 @@
         v-if="$vuetify.breakpoint.mobile"
         @click.stop="drawer.show = !drawer.show"
       />
-      <!-- eslint-disable -->
-      <AmministrazioneButton v-if="show" />
+      <AmministrazioneButton v-if="$auth.user.ruolo.length > 0" />
       <v-spacer />
       <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer />

@@ -26,11 +26,12 @@ try {
     morgan(
       '[ from :remote-addr at :date[clf] ]\t:http-version :method \tto :url\t status::status - took :response-time ms'
     )
-  ) // * Log every request to API
+  ) // * Log every requests to API
 
   // Require API routes
   const auth = require('./routes/auth')
   const admin = require('./routes/admin')
+  const user = require('./routes/user')
 
   // Import API Routes
   app.use('/auth', auth)
@@ -40,6 +41,7 @@ try {
     adminMiddleware, // * check if is an admin
     admin
   )
+  app.use('/user', passport.authenticate('jwt', { session: false }), user)
 
   // Connect app to DB instance
   db.connect()

@@ -3,7 +3,12 @@
     <v-col cols="12" sm="12" md="12" lg="8" xl="8">
       <v-row align="start">
         <v-col cols="12" sm="12" md="8" lg="6" xl="6">
-          <UserCard id="ucard" ref="ucard" :user="$auth.user" />
+          <UserCard
+            id="ucard"
+            ref="ucard"
+            :user="$auth.user"
+            @openChangeDialog="changeDialog = true"
+          />
           <PlayerCard id="pcard" ref="pcard" :player="$auth.user.giocatore" />
         </v-col>
         <v-col cols="12" sm="12" md="4" lg="6" xl="6">
@@ -30,6 +35,7 @@ export default {
   data() {
     return {
       height: null,
+      changeDialog: false,
     }
   },
 

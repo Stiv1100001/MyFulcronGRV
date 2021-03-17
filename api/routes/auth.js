@@ -52,7 +52,7 @@ router.get(
   (req, res) => {
     const { _id } = req.user
     User.findOne({ _id })
-      .select('-password')
+      .select('-password -deleted')
       .exec((err, user) => {
         if (err) res.status(500).send(err)
         else if (user) res.json({ user })
