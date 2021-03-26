@@ -903,7 +903,7 @@
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.1.1.tgz#9daf5745156fd84b8e9889a2dc721f0c58e894aa"
   integrity sha512-CAEbWH7OIur6jEOzaai83jq3FmKmv4PmX1JYfs9IrYcGEVI/lyL1EXJGCj7eFVJ0bg5QR8LMxBlEtA+xKiLpFw==
 
-"@ladjs/i18n@^7.0.1":
+"@ladjs/i18n@^7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@ladjs/i18n/-/i18n-7.1.0.tgz#b8ad021356ecac32894f54230100a92419355cf1"
   integrity sha512-VWR2AS0I+EdMF5HOR8PvNzW/Cq1QcFVQ3zvlqY0oOdYTPrll3hIqlDwFhumMoSm/Sn7OMYaFdip3Wi6ukCrqIA==
@@ -3301,7 +3301,7 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-dayjs@^1.9.6:
+dayjs@^1.10.4:
   version "1.10.4"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.4.tgz#8e544a9b8683f61783f570980a8a80eaf54ab1e2"
   integrity sha512-RI/Hh4kqRc1UKLOAf/T5zdMMX5DQIlDxwUe3wSyMMnEbGunnpENCdbUgM+dW7kXidZqCttBrmw7BhN4TMddkCw==
@@ -3614,20 +3614,20 @@ elliptic@^6.5.3:
     minimalistic-assert "^1.0.1"
     minimalistic-crypto-utils "^1.0.1"
 
-email-templates@^8.0.3:
-  version "8.0.3"
-  resolved "https://registry.yarnpkg.com/email-templates/-/email-templates-8.0.3.tgz#d713770b37c34b7c5ca1f955a8e48bcefba68103"
-  integrity sha512-k4siLBwwd7B69pT8obgs94ZMkn5UzNRomHgMd2ibmCgwDxmGXEvf63oZzMSXcdTnmMX9wH7VJubtxDcEtC4yrQ==
+email-templates@^8.0.4:
+  version "8.0.4"
+  resolved "https://registry.yarnpkg.com/email-templates/-/email-templates-8.0.4.tgz#233b9bd954ca156fdcf8508ce0a97d091b6864f7"
+  integrity sha512-o/jv6Hf4324GgTyOPrWEPgwsHEyxRNKqzne16Ac/p8RRVVX6VY5xBncBI192cA1jAhxvF13NGRgg5DcAf5HkZw==
   dependencies:
-    "@ladjs/i18n" "^7.0.1"
+    "@ladjs/i18n" "^7.1.0"
     consolidate "^0.16.0"
     debug "^4.3.1"
     get-paths "^0.0.7"
     html-to-text "^6.0.0"
     juice "^7.0.0"
-    lodash "^4.17.20"
-    nodemailer "^6.4.17"
-    preview-email "^3.0.3"
+    lodash "^4.17.21"
+    nodemailer "^6.5.0"
+    preview-email "^3.0.4"
 
 emoji-regex@^7.0.1:
   version "7.0.3"
@@ -5703,7 +5703,7 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-mailparser@^3.0.1:
+mailparser@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/mailparser/-/mailparser-3.1.0.tgz#bd947b9936f09f6a0d8e66e8509c86d7d11179af"
   integrity sha512-XW8aZ649hdgIxWIiHVsgaX7hUwf3eD4KJvtYOonssDuJHQpFJSqKWvTO5XjclNBF5ARWPFDq5OzBPTYH2i57fg==
@@ -6358,7 +6358,7 @@ nodemailer@6.4.18:
   resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.4.18.tgz#2788c85792844fc17befda019031609017f4b9a1"
   integrity sha512-ht9cXxQ+lTC+t00vkSIpKHIyM4aXIsQ1tcbQCn5IOnxYHi81W2XOaU66EQBFFpbtzLEBTC94gmkbD4mGZQzVpA==
 
-nodemailer@^6.4.16, nodemailer@^6.4.17:
+nodemailer@^6.4.17, nodemailer@^6.5.0:
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.5.0.tgz#d12c28d8d48778918e25f1999d97910231b175d9"
   integrity sha512-Tm4RPrrIZbnqDKAvX+/4M+zovEReiKlEXWDzG4iwtpL9X34MJY+D5LnQPH/+eghe8DLlAVshHAJZAZWBGhkguw==
@@ -6540,7 +6540,7 @@ onetime@^5.1.0, onetime@^5.1.2:
   dependencies:
     mimic-fn "^2.1.0"
 
-open@^7.3.0:
+open@7:
   version "7.4.2"
   resolved "https://registry.yarnpkg.com/open/-/open-7.4.2.tgz#b8147e26dcf3e426316c730089fd71edd29c2321"
   integrity sha512-MVHddDVweXZF3awtlAS+6pgKLlm/JgxZ90+/NBurBoQctVOOB/zDdVjcyPzQ+0laDGbsWgrRkflI65sQeOgT9Q==
@@ -7584,18 +7584,18 @@ pretty-time@^1.1.0:
   resolved "https://registry.yarnpkg.com/pretty-time/-/pretty-time-1.1.0.tgz#ffb7429afabb8535c346a34e41873adf3d74dd0e"
   integrity sha512-28iF6xPQrP8Oa6uxE6a1biz+lWeTOAPKggvjB8HAs6nVMKZwf5bG++632Dx614hIWgUPkgivRfG+a8uAXGTIbA==
 
-preview-email@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/preview-email/-/preview-email-3.0.3.tgz#1dd9b26c9be313ce59aca17db1de33c54b3676cf"
-  integrity sha512-MQjWlcFbyQJVd6WUr9/PLSKw1FIdTOG8plRXOVz+lUVQZkR1alRGYVaGOSwKbVlu+tVC7eNQj7bcbNURZIAsRw==
+preview-email@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/preview-email/-/preview-email-3.0.4.tgz#3405c014dcd6890e1618f18d1b2973db71e7e60f"
+  integrity sha512-g9jbnFHI8QfQAcKeCsZpSzMJT/CeGuJoV311R/NLS6PTsalJkMKkUeirSJJgMJBUYOGJLrhM7MsNVWgk1b13BA==
   dependencies:
-    dayjs "^1.9.6"
+    dayjs "^1.10.4"
     debug "^4.3.1"
-    mailparser "^3.0.1"
-    nodemailer "^6.4.16"
-    open "^7.3.0"
-    pug "^3.0.0"
-    uuid "^8.3.1"
+    mailparser "^3.1.0"
+    nodemailer "^6.5.0"
+    open "7"
+    pug "^3.0.2"
+    uuid "^8.3.2"
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
@@ -7757,7 +7757,7 @@ pug-walk@^2.0.0:
   resolved "https://registry.yarnpkg.com/pug-walk/-/pug-walk-2.0.0.tgz#417aabc29232bb4499b5b5069a2b2d2a24d5f5fe"
   integrity sha512-yYELe9Q5q9IQhuvqsZNwA5hfPkMJ8u92bQLIMcsMxf/VADjNtEYptU+inlufAFYcWdHlwNfZOEnOOQrZrcyJCQ==
 
-pug@^3.0.0:
+pug@^3.0.0, pug@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/pug/-/pug-3.0.2.tgz#f35c7107343454e43bc27ae0ff76c731b78ea535"
   integrity sha512-bp0I/hiK1D1vChHh6EfDxtndHji55XP/ZJKwsRqrz6lRia6ZC2OZbdAymlxdVFwd1L70ebrVJw4/eZ79skrIaw==
@@ -9332,7 +9332,7 @@ utils-merge@1.0.1:
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
 
-uuid@^8.3.1:
+uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
